@@ -19,7 +19,7 @@ public class IPokedexFactoryTest {   // permet de créer une instance de IPokede
         aquali = new PokemonMetadata(133, "Aquali", 186, 186, 260);
     }
         @Test
-    public void PokedexCreateTest() {
+    public void CreatePokedexTest() {
         IPokemonMetadataProvider pokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
         IPokemonFactory pokemonFactory = Mockito.mock(IPokemonFactory.class);
         Mockito.doReturn(Mockito.mock(IPokedex.class)).when(pokedexFactory).createPokedex(Mockito.any(pokemonMetadataProvider.getClass()), Mockito.any(pokemonFactory.getClass()));
