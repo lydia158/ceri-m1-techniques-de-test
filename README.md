@@ -2,7 +2,7 @@
 
 SOLTANI Lydia M1 ILSEN ALTERNANT
 
-CircleCI ](https://badgen.net/badge/icon/circleci?icon=circleci&label)](https://https://circleci.com/)
+[![CircleCI](https://badgen.net/badge/icon/circleci?icon=circleci&label)](https://https://circleci.com/)
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
