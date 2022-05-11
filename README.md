@@ -4,6 +4,8 @@ SOLTANI Lydia M1 ILSEN ALTERNANT
 
 [![CircleCI](https://circleci.com/gh/lydia158/ceri-m1-techniques-de-test.svg?style=svg&circle-token=5b6a1bc34282d95c55256a53e4d2e3c7c31747b1)]
 
+![Coverage](.github/badges/jacoco.svg)
+
 
 ## Introduction
 
