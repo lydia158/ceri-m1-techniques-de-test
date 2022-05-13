@@ -2,6 +2,8 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@3.2.2
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -26,6 +28,29 @@ jobs:
       - run:
           name: Test
           command: mvn test
+      - run:
+          name: Javadoc
+          command: mvn -DskipTests javadoc:javadoc
+      - codecov/upload
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "lydia.soltani@alumni.univ-avignon.fr"
+            git config user.name "lydia"
+      - add_ssh_keys:
+          fingerprints:
+            - "7b:46:bb:f2:60:74:9c:b6:0b:7d:06:7c:05:e0:17:b5"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist /target/site/apidocs
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -33,4 +58,7 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-test 
+      - build-and-test
+      - docs-deploy:
+          requires:
+            - build-and-test
