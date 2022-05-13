@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Javadoc
           command: mvn -DskipTests javadoc:javadoc
-      - codecov/upload
+
   docs-deploy:
     docker:
       - image: node:8.10.0
